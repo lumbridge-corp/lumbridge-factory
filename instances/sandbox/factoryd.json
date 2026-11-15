@@ -1,0 +1,33 @@
+{
+  "db": "~/factory-sandbox/factory.sqlite3",
+  "socket": "~/factory-sandbox/run/agentd.sock",
+  "gitea_url": "https://git.example.com",
+  "token_file": "~/.config/gitea/token-issues",
+  "review_token_file": "~/.config/gitea/token-issues",
+  "accounts": ["claude-a"],
+  "allow_sandbox": true,
+  "tick_seconds": 1.0,
+  "poll_seconds": 5.0,
+  "gate_read_seconds": 5.0,
+  "retain_ended_seconds": 0,
+  "policy": {
+    "instance": "sandbox",
+    "allowed": {"gitea": ["owner"]},
+    "repositories": [{"name": "acme/factory-sandbox", "base": "main", "required_checks": ["CI / checks (pull_request)"], "ci_runner": ""}],
+    "bots": ["owner"],
+    "reviewer_bots": ["owner"],
+    "sandbox_shared_account": "owner",
+    "data_rules": "Throwaway repo; no real data.",
+    "outside_action_rules": "No outbound contact of any kind.",
+    "company_clauses": "None.",
+    "merge_policy": "Nobody merges here except the test run.",
+    "rules": {"build": "auto", "outbound-guard": "auto", "handback": "auto", "main-red": "observe", "triage": "observe"},
+    "slots": 2,
+    "reserved_slots": 1,
+    "builder_model": "sonnet",
+    "reviewer_model": "sonnet",
+    "turn_limit_seconds": 600,
+    "budget_tokens": 400000,
+    "budget_wall_seconds": 3600
+  }
+}

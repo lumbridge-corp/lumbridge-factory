@@ -1,0 +1,17 @@
+{
+  "socket": "~/factory-sandbox/run/agentd.sock",
+  "state_dir": "~/factory-sandbox/agentd",
+  "worktrees_dir": "~/factory-sandbox/worktrees",
+  "repos_dir": "~/factory-sandbox/repos",
+  "agent_home": "~/factory-sandbox/home",
+  "repos": {"acme/factory-sandbox": "ssh://git@git.example.com/acme/factory-sandbox.git"},
+  "tools": {"claude": {"enabled": true, "bin": "/usr/local/bin/claude", "expected_version": "2.1.310"}},
+  "accounts": {"claude-a": {"tool": "claude", "env_file": "~/.config/claude/owner-oauth.env", "env_var": "CLAUDE_CODE_OAUTH_TOKEN"}},
+  "child_env": {
+    "GIT_AUTHOR_NAME": "factory-sandbox",
+    "GIT_AUTHOR_EMAIL": "factory-sandbox@example.invalid",
+    "GIT_COMMITTER_NAME": "factory-sandbox",
+    "GIT_COMMITTER_EMAIL": "factory-sandbox@example.invalid"
+  },
+  "max_turns": 2
+}

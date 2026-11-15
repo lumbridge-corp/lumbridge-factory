@@ -1,0 +1,26 @@
+# The scrub check and the unit tests, on a GitHub-hosted runner. No secrets are needed. Actions are pinned to a commit.
+name: CI
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Scrub check
+        run: scripts/scrub-check
+      - name: Unit tests (Python 3.12 from the image)
+        run: |
+          python3 --version
+          python3 -m unittest discover -s tests

@@ -1,0 +1,4 @@
+#!/bin/sh
+# Run the CLI from a checkout or a release, wherever it is called from.
+here=$(dirname "$(readlink -f "$0")")
+PYTHONPATH="$here/.." exec python3 -m lumbridge_factory "$@"
