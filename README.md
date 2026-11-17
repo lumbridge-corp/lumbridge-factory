@@ -1,3 +1,5 @@
+![Lumbridge Factory: Agents build. People merge.](docs/assets/banner.jpg)
+
 # Lumbridge Factory
 
 An engine that takes issues, drives a coding agent in a sandbox, opens pull requests and repairs failed checks; people merge.
